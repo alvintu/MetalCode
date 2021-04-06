@@ -63,8 +63,12 @@ func computeWay(arr1:[Float],arr2:[Float]) {
     commandEncoder?.endEncoding()
     //push this command to the command queue for processing
     commandBuffer?.commit()
-    //get the poitner to the beginning of our data
+//wait until the gpu function completes before working with any of the data
     commandBuffer?.waitUntilCompleted()
+    //waitUntilCompleted is actually considered bad practice because it prevents cpu-gpu parallelism -
+    //use     commandBuffer?.addCompletedHandler() instead
+
+    
     //get the pointer to the beginning of the data
     var resultBufferPointer = resultBuff?.contents().bindMemory(to: Float.self, capacity: MemoryLayout<Float>.size * count)
     
