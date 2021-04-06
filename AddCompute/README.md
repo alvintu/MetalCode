@@ -5,11 +5,11 @@ Demonstrates 2 For-Loops
 - one that utilizes the GPU with Metal
 
 
-#### How doe the CPU communicate with the GPU?
+### How doe the CPU communicate with the GPU?
 Shared CPU/GPU Memory State
 
-#### MTLBuffer
+### MTLBuffer
 A resource that stores data in a format defined by your app.
 
-#### MemoryLayout
+### MemoryLayout
 The memory layout of a type, describing its size, stride, and alignment.
