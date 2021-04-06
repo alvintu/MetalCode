@@ -28,5 +28,5 @@ const device packed_float3* vertex_array [[buffer(0)]],
 fragment half4 basic_fragment() {
   //all fragment shaders must begin with keyword fragment
   
-  return half4(1.0); //we return 1,1,1,1 which is white
+  return half4(0.6, 0.8, 0.8, 0.8); //we return 1,1,1,1 which is white
 }
