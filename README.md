@@ -9,7 +9,8 @@ I think another good concept to understand (as it will come up quite often) are 
 [Explain me Metal like I'm 5 - iOS Conf SG 2020](https://www.youtube.com/watch?v=VQK28rRK6OU)  
 [Compute Kernel Functions With Metal](https://www.youtube.com/watch?v=zXBEJzAaHY8)  
 [Metal Tutorial: Getting Started](https://www.raywenderlich.com/7475-metal-tutorial-getting-started)  
-[Official Metal Sample Code from Apple](https://developer.apple.com/metal/sample-code/)  
+[Official Metal Sample Code from Apple](https://developer.apple.com/metal/sample-code/)
+[Metal Shading Language Specification](https://developer.apple.com/metal/Metal-Shading-Language-Specification.pdf)
 
 
 
