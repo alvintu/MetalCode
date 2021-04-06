@@ -5,7 +5,7 @@ Demonstrates 2 For-Loops
 - one that utilizes the GPU with Metal
 
 
-### How doe the CPU communicate with the GPU?
+### How does the CPU communicate with the GPU?
 Shared CPU/GPU Memory State
 
 ### MTLBuffer
