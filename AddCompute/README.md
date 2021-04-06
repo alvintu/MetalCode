@@ -13,3 +13,7 @@ A resource that stores data in a format defined by your app.
 
 ### MemoryLayout
 The memory layout of a type, describing its size, stride, and alignment.
+
+### MTLComputePipelineState
+An object that contains a compiled compute pipeline.
+

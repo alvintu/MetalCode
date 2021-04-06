@@ -41,34 +41,39 @@ func computeWay(arr1:[Float],arr2:[Float]) {
     
     let resultBuff = device?.makeBuffer(length: MemoryLayout<Float>.size * count, options: .storageModeShared)
     
+    //Create a buffer to be sent to the command queue
     let commandBuffer = commandQueue?.makeCommandBuffer()
     
+    //create an encoder to set values on the compute function
     let commandEncoder = commandBuffer?.makeComputeCommandEncoder()
     commandEncoder?.setComputePipelineState(additionComputePipelineState)
     
+    //set parameters of the gpu function
     commandEncoder?.setBuffer(arr1Buff, offset: 0, index: 0)
     commandEncoder?.setBuffer(arr2Buff, offset: 0, index: 1)
     commandEncoder?.setBuffer(resultBuff, offset: 0, index: 2)
     
+    //figure out how many threads we need to use for our operation
     let threadsPerGrid = MTLSize(width: count, height: 1, depth: 1)
     let maxThreadsPerThreadGroup = additionComputePipelineState.maxTotalThreadsPerThreadgroup
     let threadsPerThreadGroup = MTLSize(width: maxThreadsPerThreadGroup, height: 1, depth: 1)
     commandEncoder?.dispatchThreads(threadsPerGrid,
                                     threadsPerThreadgroup: threadsPerThreadGroup)
-    
+    //tell encoder that it is done encoding. now, we sent this off to the gpu
     commandEncoder?.endEncoding()
-    
+    //push this command to the command queue for processing
     commandBuffer?.commit()
-    
+    //get the poitner to the beginning of our data
     commandBuffer?.waitUntilCompleted()
-    
+    //get the pointer to the beginning of the data
     var resultBufferPointer = resultBuff?.contents().bindMemory(to: Float.self, capacity: MemoryLayout<Float>.size * count)
     
+    //print out all of our newly added together array
     for i in 0..<3 {
         print("\(arr1[i]) + \(arr2[i]) = \(Float(resultBufferPointer!.pointee) as Any)")
         resultBufferPointer = resultBufferPointer?.advanced(by: 1)
     }
-    
+    //print out elapsedDate
     let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
     print("Time elapsed \(String(format: "%.05f", timeElapsed)) seconds")
     print()
